@@ -7,8 +7,10 @@ export class TaskRepository {
         return rows as Task[]
     }
 
-    async create() {
+    async create(title: string) {
+        const [result]: any = await connection.query('INSERT INTO tasks (title) VALUES (?)', [title]);
 
+        return result.insertId;
     }
 
     async update() {

@@ -7,4 +7,12 @@ export class TaskService {
     async listTasks(): Promise<Task[]> {
         return repository.findAll();
     }    
+
+    async create(title: string) {
+        if(!title || title.trim() === '') {
+            throw new Error("Título é obrigatório");
+        }
+
+        return await repository.create(title);
+    }
 }

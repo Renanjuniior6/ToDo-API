@@ -12,4 +12,16 @@ export class TaskController {
             next(error);
         }
     }
+
+    async create(req: Request, res: Response, next: NextFunction) {
+        try {
+            const {title} = req.body;
+            const id = await service.create(title);
+
+            return res.status(201).json({message: "Task criada", id});
+
+        } catch (error) {
+            next(error);
+        }
+    }
 }

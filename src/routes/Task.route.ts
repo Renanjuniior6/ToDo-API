@@ -5,5 +5,6 @@ const router = Router();
 const controller = new TaskController;
 
 router.get('/tasks', controller.index);
+router.post('/tasks', controller.create);
 
 export default router;
