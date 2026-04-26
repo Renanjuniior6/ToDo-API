@@ -15,4 +15,8 @@ export class TaskService {
 
         return await repository.create(title);
     }
+
+    async update(id: number, done: boolean) {
+        return repository.update(id, done);
+    }
 }

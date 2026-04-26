@@ -3,7 +3,7 @@ import { Task } from '../types/Task';
 
 export class TaskRepository {
     async findAll(): Promise<Task[]> {
-        const [rows] = await connection.query("SELECT * FROM tasks")
+        const [rows] = await connection.query("SELECT * FROM tasks");
         return rows as Task[]
     }
 
@@ -13,8 +13,8 @@ export class TaskRepository {
         return result.insertId;
     }
 
-    async update() {
-
+    async update(id: number, done: boolean) {
+        await connection.query('UPDATE tasks SET done = ? WHERE id = ?', [done, id]);
     }
 
     async delete() {

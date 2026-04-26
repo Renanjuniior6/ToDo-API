@@ -1,1 +1,17 @@
 GET http://localhost:3000/tasks
+
+###
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+    "title": "Comprar carne para a janta"
+}
+
+###
+PUT http://localhost:3000/tasks/2
+Content-Type: application/json
+
+{
+    "done": true
+}

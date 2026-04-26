@@ -24,4 +24,17 @@ export class TaskController {
             next(error);
         }
     }
+
+    async update(req: Request, res: Response, next: NextFunction) {
+        try {
+            const { done } = req.body;
+            const id = Number(req.params.id);
+
+            await service.update(id, done);
+
+            return res.status(200).json({menssagem: "Task atualizada!"});
+        } catch(error) {
+            next(error);
+        }
+    }
 }
