@@ -32,8 +32,19 @@ export class TaskController {
 
             await service.update(id, done);
 
-            return res.status(200).json({menssagem: "Task atualizada!"});
+            return res.status(200).json({mensagem: "Task atualizada!"});
         } catch(error) {
+            next(error);
+        }
+    }
+
+    async delete(req: Request, res: Response, next: NextFunction) {
+        try {
+            const id = Number(req.params.id);
+            await service.delete(id);
+
+            return res.json({mensagem: "Task removida"});
+        } catch (error) {
             next(error);
         }
     }

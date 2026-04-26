@@ -5,7 +5,7 @@ POST http://localhost:3000/tasks
 Content-Type: application/json
 
 {
-    "title": "Comprar carne para a janta"
+    "title": "Comprar frango"
 }
 
 ###
@@ -15,3 +15,6 @@ Content-Type: application/json
 {
     "done": true
 }
+
+###
+DELETE http://localhost:3000/tasks/4

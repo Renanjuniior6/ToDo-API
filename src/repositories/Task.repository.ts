@@ -17,7 +17,7 @@ export class TaskRepository {
         await connection.query('UPDATE tasks SET done = ? WHERE id = ?', [done, id]);
     }
 
-    async delete() {
-
+    async delete(id: number) {
+        await connection.query('DELETE FROM tasks WHERE id = ?', [id]);
     }
 }

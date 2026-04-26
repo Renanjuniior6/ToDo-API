@@ -7,5 +7,6 @@ const controller = new TaskController;
 router.get('/tasks', controller.index);
 router.post('/tasks', controller.create);
 router.put('/tasks/:id', controller.update);
+router.delete('/tasks/:id', controller.delete);
 
 export default router;

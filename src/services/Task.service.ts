@@ -19,4 +19,8 @@ export class TaskService {
     async update(id: number, done: boolean) {
         return repository.update(id, done);
     }
+
+    async delete(id: number) {
+        return repository.delete(id);
+    }
 }
