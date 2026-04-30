@@ -1,5 +1,8 @@
+import { v4 as uuid } from 'uuid';
 import { TaskRepository } from "../repositories/Task.repository";
 import { Task } from "../types/Task";
+import { createTaskSchema } from '../dtos/CreateTaskDTO';
+import { updateTaskSchema } from '../dtos/UpdateTaskDTO';
 
 const repository = new TaskRepository;
 
@@ -8,19 +11,22 @@ export class TaskService {
         return repository.findAll();
     }    
 
-    async create(title: string) {
-        if(!title || title.trim() === '') {
-            throw new Error("Título é obrigatório");
-        }
+    async create(data: unknown) {
+       const body = createTaskSchema.parse(data);
+       const id = uuid();
 
-        return await repository.create(title);
+       await repository.create(id, body.title);
+
+       return id;
     }
 
-    async update(id: number, done: boolean) {
-        return repository.update(id, done);
+    async update(id: string, data: unknown) {
+        const body = updateTaskSchema.parse(data)
+        
+        await repository.update(id, body.done);
     }
 
-    async delete(id: number) {
-        return repository.delete(id);
+    async delete(id: string) {
+        await repository.delete(id);
     }
 }
