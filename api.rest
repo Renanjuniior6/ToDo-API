@@ -9,7 +9,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3000/tasks/2
+PUT http://localhost:3000/tasks/1
 Content-Type: application/json
 
 {
