@@ -7,17 +7,15 @@ export class TaskRepository {
         return rows as Task[]
     }
 
-    async create(title: string) {
-        const [result]: any = await connection.query('INSERT INTO tasks (title) VALUES (?)', [title]);
-
-        return result.insertId;
+    async create(id: string, title: string) {
+        await connection.query('INSERT INTO tasks (id, title) VALUES (?, ?)', [id, title]);
     }
 
-    async update(id: number, done: boolean) {
+    async update(id: string, done: boolean) {
         await connection.query('UPDATE tasks SET done = ? WHERE id = ?', [done, id]);
     }
 
-    async delete(id: number) {
+    async delete(id: string) {
         await connection.query('DELETE FROM tasks WHERE id = ?', [id]);
     }
 }

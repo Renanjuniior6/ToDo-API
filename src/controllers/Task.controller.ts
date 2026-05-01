@@ -15,8 +15,7 @@ export class TaskController {
 
     async create(req: Request, res: Response, next: NextFunction) {
         try {
-            const {title} = req.body;
-            const id = await service.create(title);
+            const id = await service.create(req.body);
 
             return res.status(201).json({message: "Task criada", id});
 
@@ -27,10 +26,7 @@ export class TaskController {
 
     async update(req: Request, res: Response, next: NextFunction) {
         try {
-            const { done } = req.body;
-            const id = Number(req.params.id);
-
-            await service.update(id, done);
+            await service.update(req.params.id, req.body);
 
             return res.status(200).json({mensagem: "Task atualizada!"});
         } catch(error) {
@@ -40,10 +36,9 @@ export class TaskController {
 
     async delete(req: Request, res: Response, next: NextFunction) {
         try {
-            const id = Number(req.params.id);
-            await service.delete(id);
+            await service.delete(req.params.id);
 
-            return res.json({mensagem: "Task removida"});
+            return res.status(204).send();
         } catch (error) {
             next(error);
         }
