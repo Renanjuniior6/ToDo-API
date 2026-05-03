@@ -38,7 +38,7 @@ export class AuthService {
 
         const user = await userRepository.findByEmail(body.email);
         if(!user) {
-            throw new Error("Credencias inválidas")
+            throw new Error("Credenciais inválidas");
         }
 
         const passwordMatch = await bcrypt.compare(body.password, user.password);
@@ -55,5 +55,9 @@ export class AuthService {
         );
 
         return { token };
+    }
+
+    async index(): Promise<User | User[]> {
+        return userRepository.index();
     }
 }

@@ -12,8 +12,8 @@ app.get('/health', (req, res) => {
     return res.json({ status: 'ok'});
 })
 
-app.use(TaskRoutes);
 app.use(AuthRoutes);
+app.use(TaskRoutes);
 app.use(errorMiddleware);
 
 async function startServer() {

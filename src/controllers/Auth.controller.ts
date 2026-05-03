@@ -21,4 +21,13 @@ export class AuthController {
             next(error);
         }
     }
+
+    async index(req: Request, res: Response, next: NextFunction) {
+        try {
+            const result = await service.index();
+            return res.status(200).json(result);
+        } catch (error) {
+            next(error)
+        }
+    }
 }
