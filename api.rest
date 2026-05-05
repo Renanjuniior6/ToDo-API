@@ -18,3 +18,27 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/tasks/4
+
+
+###
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "name": "Renan",
+    "email": "renan@gmail.com",
+    "password": "123456"
+}
+
+### 
+POST http://localhost:3000/login
+Content-Type: application/json
+Authorization: Bearer string_de_acesso_valido
+
+{
+    "email": "renan@gmail.com",
+    "password": "123456"
+}
+
+###
+GET http://localhost:3000/users

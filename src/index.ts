@@ -1,6 +1,7 @@
 import express from 'express';
 import { getConnection } from './database/connection';
 import TaskRoutes from './routes/Task.route';
+import AuthRoutes from './routes/Auth.route';
 import { errorMiddleware } from './middlewares/error.middleware';
 
 const app = express();
@@ -11,6 +12,7 @@ app.get('/health', (req, res) => {
     return res.json({ status: 'ok'});
 })
 
+app.use(AuthRoutes);
 app.use(TaskRoutes);
 app.use(errorMiddleware);
 
